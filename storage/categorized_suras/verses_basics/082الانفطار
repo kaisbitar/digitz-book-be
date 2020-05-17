@@ -1,0 +1,135 @@
+[
+    {
+        "bigIndx": 5830,
+        "verseIndx": 1,
+        "verseText": "\u0625\u0630\u0627 \u0627\u0644\u0633\u0645\u0627\u0621 \u0627\u0646\u0641\u0637\u0631\u062a",
+        "NumberOfWords": 3,
+        "NumberOfLetters": 15
+    },
+    {
+        "bigIndx": 5831,
+        "verseIndx": 2,
+        "verseText": "\u0648\u0625\u0630\u0627 \u0627\u0644\u0643\u0648\u0627\u0643\u0628 \u0627\u0646\u062a\u062b\u0631\u062a",
+        "NumberOfWords": 3,
+        "NumberOfLetters": 17
+    },
+    {
+        "bigIndx": 5832,
+        "verseIndx": 3,
+        "verseText": "\u0648\u0625\u0630\u0627 \u0627\u0644\u0628\u062d\u0627\u0631 \u0641\u062c\u0631\u062a",
+        "NumberOfWords": 3,
+        "NumberOfLetters": 14
+    },
+    {
+        "bigIndx": 5833,
+        "verseIndx": 4,
+        "verseText": "\u0648\u0625\u0630\u0627 \u0627\u0644\u0642\u0628\u0648\u0631 \u0628\u0639\u062b\u0631\u062a",
+        "NumberOfWords": 3,
+        "NumberOfLetters": 15
+    },
+    {
+        "bigIndx": 5834,
+        "verseIndx": 5,
+        "verseText": "\u0639\u0644\u0645\u062a \u0646\u0641\u0633 \u0645\u0627 \u0642\u062f\u0645\u062a \u0648\u0623\u062e\u0631\u062a",
+        "NumberOfWords": 5,
+        "NumberOfLetters": 18
+    },
+    {
+        "bigIndx": 5835,
+        "verseIndx": 6,
+        "verseText": "\u064a\u0623\u064a\u0647\u0627 \u0627\u0644\u0625\u0646\u0633\u0646 \u0645\u0627 \u063a\u0631\u0643 \u0628\u0631\u0628\u0643 \u0627\u0644\u0643\u0631\u064a\u0645",
+        "NumberOfWords": 6,
+        "NumberOfLetters": 26
+    },
+    {
+        "bigIndx": 5836,
+        "verseIndx": 7,
+        "verseText": "\u0627\u0644\u0630\u064a \u062e\u0644\u0642\u0643 \u0641\u0633\u0648\u064a\u0643 \u0641\u0639\u062f\u0644\u0643",
+        "NumberOfWords": 4,
+        "NumberOfLetters": 18
+    },
+    {
+        "bigIndx": 5837,
+        "verseIndx": 8,
+        "verseText": "\u0641\u064a \u0623\u064a \u0635\u0648\u0631\u0629 \u0645\u0627 \u0634\u0627\u0621 \u0631\u0643\u0628\u0643",
+        "NumberOfWords": 6,
+        "NumberOfLetters": 17
+    },
+    {
+        "bigIndx": 5838,
+        "verseIndx": 9,
+        "verseText": "\u0643\u0644\u0627 \u0628\u0644 \u062a\u0643\u0630\u0628\u0648\u0646 \u0628\u0627\u0644\u062f\u064a\u0646",
+        "NumberOfWords": 4,
+        "NumberOfLetters": 17
+    },
+    {
+        "bigIndx": 5839,
+        "verseIndx": 10,
+        "verseText": "\u0648\u0625\u0646 \u0639\u0644\u064a\u0643\u0645 \u0644\u062d\u0641\u0638\u064a\u0646",
+        "NumberOfWords": 3,
+        "NumberOfLetters": 14
+    },
+    {
+        "bigIndx": 5840,
+        "verseIndx": 11,
+        "verseText": "\u0643\u0631\u0627\u0645\u0627 \u0643\u062a\u0628\u064a\u0646",
+        "NumberOfWords": 2,
+        "NumberOfLetters": 10
+    },
+    {
+        "bigIndx": 5841,
+        "verseIndx": 12,
+        "verseText": "\u064a\u0639\u0644\u0645\u0648\u0646 \u0645\u0627 \u062a\u0641\u0639\u0644\u0648\u0646",
+        "NumberOfWords": 3,
+        "NumberOfLetters": 14
+    },
+    {
+        "bigIndx": 5842,
+        "verseIndx": 13,
+        "verseText": "\u0625\u0646 \u0627\u0644\u0623\u0628\u0631\u0627\u0631 \u0644\u0641\u064a \u0646\u0639\u064a\u0645",
+        "NumberOfWords": 4,
+        "NumberOfLetters": 16
+    },
+    {
+        "bigIndx": 5843,
+        "verseIndx": 14,
+        "verseText": "\u0648\u0625\u0646 \u0627\u0644\u0641\u062c\u0627\u0631 \u0644\u0641\u064a \u062c\u062d\u064a\u0645",
+        "NumberOfWords": 4,
+        "NumberOfLetters": 16
+    },
+    {
+        "bigIndx": 5844,
+        "verseIndx": 15,
+        "verseText": "\u064a\u0635\u0644\u0648\u0646\u0647\u0627 \u064a\u0648\u0645 \u0627\u0644\u062f\u064a\u0646",
+        "NumberOfWords": 3,
+        "NumberOfLetters": 15
+    },
+    {
+        "bigIndx": 5845,
+        "verseIndx": 16,
+        "verseText": "\u0648\u0645\u0627 \u0647\u0645 \u0639\u0646\u0647\u0627 \u0628\u063a\u0627\u0626\u0628\u064a\u0646",
+        "NumberOfWords": 4,
+        "NumberOfLetters": 16
+    },
+    {
+        "bigIndx": 5846,
+        "verseIndx": 17,
+        "verseText": "\u0648\u0645\u0627 \u0623\u062f\u0631\u064a\u0643 \u0645\u0627 \u064a\u0648\u0645 \u0627\u0644\u062f\u064a\u0646",
+        "NumberOfWords": 5,
+        "NumberOfLetters": 18
+    },
+    {
+        "bigIndx": 5847,
+        "verseIndx": 18,
+        "verseText": "\u062b\u0645 \u0645\u0627 \u0623\u062f\u0631\u064a\u0643 \u0645\u0627 \u064a\u0648\u0645 \u0627\u0644\u062f\u064a\u0646",
+        "NumberOfWords": 6,
+        "NumberOfLetters": 19
+    },
+    {
+        "bigIndx": 5848,
+        "verseIndx": 19,
+        "verseText": "\u064a\u0648\u0645 \u0644\u0627 \u062a\u0645\u0644\u0643 \u0646\u0641\u0633 \u0644\u0646\u0641\u0633 \u0634\u064a\u0627 \u0648\u0627\u0644\u0623\u0645\u0631 \u064a\u0648\u0645\u0626\u0630 \u0644\u0644\u0647",
+        "NumberOfWords": 9,
+        "NumberOfLetters": 33
+    }
+]
