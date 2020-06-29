@@ -9,9 +9,7 @@ class CategorizorService
 
     public $suraName;
     public function __construct()
-    {       
-        // $this->fileName = $request->suraName;
-    }
+    {    }
 
 
     public function categorize()
@@ -39,7 +37,6 @@ class CategorizorService
         
         foreach ($results->versesMap as $value) {
             foreach($value as $key => $innerValue){
-                // dd($value);
                 $tmp = [];
                 $neededDtls = [
                     "LetterOccurrences",
@@ -48,20 +45,13 @@ class CategorizorService
                     "WordIndexes"
                 ];
                 if(in_array($key, $neededDtls)){
-
                     $container[$key] = [];
-                    // $LetterOccurrences;
-                    // $LetterIndexes;
-                    // $WordOccurrences;
-                    // $WordIndexes;
-                    // dump($container);
                     $index = 0;
                     foreach($innerValue as $innerKey => $item){
                         $obj = new stdClass();
                         $obj->$innerKey = $item;
                         $tmp[$index] = $obj;
                         $index++;
-
                     }
                     $container[$key] = $tmp;
                     $suraDetails[$verseIndex] = $container;
@@ -69,9 +59,9 @@ class CategorizorService
             }
             $verseIndex++;
         }
+
         file_put_contents(storage_path('categorized_suras/details/' . $this->fileName), json_encode($suraDetails, JSON_PRETTY_PRINT),FILE_APPEND );
 
-        // echo json_encode( $suraDetails);
     }
     public function categorizeVersesBasic()
     {
@@ -91,7 +81,7 @@ class CategorizorService
             $obj2->verseNumberToQuran = $this->bigIndx;
             $obj2->suraNumber = $this->suraNumber;
             $obj2->sura = $this->fileName;
-            $obj2->verseNumber = $value->verseIndx;
+            $obj2->verseIndx = $value->verseIndx;
             $obj2->verseText = $value->verseText;
             array_push($this->searchBasics, $obj2);
 
@@ -100,8 +90,8 @@ class CategorizorService
         }
 
         file_put_contents(storage_path('categorized_suras/verses_basics/' . $this->fileName ), json_encode($versesBasics, JSON_PRETTY_PRINT));
-        // echo (json_encode($searchBasics, JSON_PRETTY_PRINT));
     }
+
     public function categorizeSuraBasics()
     {
         $results =  json_decode($this->mappedSura);
@@ -119,27 +109,16 @@ class CategorizorService
 
         file_put_contents(storage_path('categorized_suras/suras_basics/' . $this->fileName ), json_encode($tmp));
     }
+
     public function allSurasData()
     {    
         return file_get_contents(storage_path('allSurasData'));
         
     }
-
     
-
     public function viewQuranIndex(){
         $quranIndex = file_get_contents(storage_path('quranIndexWithData'));
 
         return $quranIndex;
     }
-
-    // public function viewSuraMap()
-    // {    
-    //     $suraName = $this->fileName;
-    //     $this->mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
-
-    //     return(json_decode($this->mappedSura));
-    //     return $this->mappedSura;
-        
-    // }
 }

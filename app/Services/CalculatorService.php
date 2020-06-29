@@ -50,7 +50,7 @@ class CalculatorService
 
             $this->fullSura->WordOccurrences = $this->counter->countWordsInString($this->fullSura->suraString);
             // dd($this->fullSura->verses);
-            $this->fullSura->WordIndex = $this->indexer->indexWordsInString($this->fullSura->suraString);
+            $this->fullSura->WordIndexes = $this->indexer->indexWordsInString($this->fullSura->suraString);
             $this->fullSura->LetterOccurrences = $this->counter->countLettersInString($this->fullSura->suraString);
             $this->fullSura->LetterIndexes = $this->indexer->indexLettersInString($this->fullSura->verses);
             

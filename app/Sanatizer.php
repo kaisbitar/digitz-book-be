@@ -150,13 +150,26 @@ class Sanatizer extends Model
             $this->allSurasData[$versekey]->verseText = str_replace('تىن', 'تين', $this->allSurasData[$versekey]->verseText);
             
             
+            $this->allSurasData[$versekey]->verseText = str_replace('والأفءدة', 'والأفدة', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('أنجىنا', 'أنجينا', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('أفءدتهم', 'أفدتهم', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('تجءرون', 'تجرون', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('المستءخرين', 'المستخرين', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('شطءه', 'شطه', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('استءذن', 'استذن', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('استءذنوك', 'استذنوك', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('ووقىنا', 'ووقينا', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('لخطءين', 'لخطين', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('يجءرون', 'يجرون', $this->allSurasData[$versekey]->verseText);
+    
+            جءروا
             //use for testing
             // if(strpos($this->allSurasData[$versekey]->verseText," و")){
             //     echo $this->allSurasData[$versekey]->verseText;
             //     echo '<br>';
             //     echo '<br>';
             // }
-        }    
+        }
 
         return $this->allSurasData;
     }
