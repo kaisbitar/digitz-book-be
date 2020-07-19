@@ -182,7 +182,7 @@ class CalculatorService
         $surasFiles = scandir(storage_path('SanatizedSuras'));
         foreach ($surasFiles as $suraFileName) {
             if (($suraFileName != '.')&&($suraFileName != '..')&&($suraFileName != 'المصحف')) {
-                $suraFile = File::get(storage_path('sanatizedSuras' . '/' .$suraFileName));
+                $suraFile = File::get(storage_path('SanatizedSuras' . '/' .$suraFileName));
                 
                 $this->fullSura = new FullSura($suraFile);
                 $this->fullSura->Name = $suraFileName;

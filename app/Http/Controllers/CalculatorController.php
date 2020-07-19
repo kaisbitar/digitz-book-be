@@ -31,7 +31,7 @@ class CalculatorController extends Controller
         }
         else {
             $fileName = $request->fileName;     
-            $suraFile = File::get(storage_path('sanatizedSuras' . '/' .$fileName));
+            $suraFile = File::get(storage_path('SanatizedSuras' . '/' .$fileName));
             if (!($suraFile)) {
                 throw new \Exception("Sura file not found");
             }
