@@ -33,8 +33,29 @@ class Viewcontroller extends Controller
     {    
         $suraName = $this->request->suraName;
         return file_get_contents(storage_path('categorized_suras/verses_basics/' . $suraName));
+    } 
+    
+    public function viewSuraBasics()
+    {    
+        $suraName = $this->request->suraName;
+        return file_get_contents(storage_path('categorized_suras/suras_basics/' . $suraName));
     }
+    public function viewSuraDetails()
+    {    
+        $suraName = $this->request->suraName;
+        return file_get_contents(storage_path('categorized_suras/details/' . $suraName));
+    }
+//     public function viewSuraDetailsTest()
+// {
+//     $suraName = $this->request->suraName;
 
+//     $mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
+//     $mappedSura = (json_decode($mappedSura, true));
+//     $wordsOcc = [];
+//     $wordsOcc = $mappedSura["wordOccurrences"];
+//     asort($wordsOcc);
+
+//     return ($wordsOcc);}
     public function viewSuraElement()
     {
         $suraName = $this->request->suraName;
@@ -53,7 +74,7 @@ class Viewcontroller extends Controller
         }
             return $tmp;
         }
-        else    return $results;
+        else    return json_encode($results);
     }
 
     public function viewVerseElement(){
@@ -87,7 +108,7 @@ class Viewcontroller extends Controller
     }
 
     public function viewQuranString(){
-        $file = file_get_contents(storage_path('allSurasData'));
+        $file = file_get_contents(storage_path('allSurasDataRaw'));
         $file = json_decode($file);
         $allQuranString = "";
         

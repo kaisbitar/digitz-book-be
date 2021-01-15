@@ -34,15 +34,13 @@ class CategorizorService
         $results =  json_decode($this->mappedSura);
         $verseIndex = 0;
         $suraDetails = [];
-        
-        foreach ($results->versesMap as $value) {
-            foreach($value as $key => $innerValue){
+            foreach($results as $key => $innerValue){
                 $tmp = [];
                 $neededDtls = [
-                    "LetterOccurrences",
-                    "LetterIndexes",
-                    "WordOccurrences",
-                    "WordIndexes"
+                    "letterOccurrences",
+                    "letterIndexes",
+                    "wordOccurrences",
+                    "wordIndexes"
                 ];
                 if(in_array($key, $neededDtls)){
                     $container[$key] = [];
@@ -54,13 +52,11 @@ class CategorizorService
                         $index++;
                     }
                     $container[$key] = $tmp;
-                    $suraDetails[$verseIndex] = $container;
+                    $suraDetails= $container;
                 }
             }
             $verseIndex++;
-        }
-
-        file_put_contents(storage_path('categorized_suras/details/' . $this->fileName), json_encode($suraDetails, JSON_PRETTY_PRINT),FILE_APPEND );
+        file_put_contents(storage_path('categorized_suras/details/' . $this->fileName), json_encode($suraDetails) );
 
     }
     public function categorizeVersesBasic()
@@ -73,8 +69,8 @@ class CategorizorService
             $obj->bigIndx = $this->bigIndx;
             $obj->verseIndx = $value->verseIndx;
             $obj->verseText = $value->verseText;
-            $obj->NumberOfWords = $value->NumberOfWords;
-            $obj->NumberOfLetters = $value->NumberOfLetters;
+            $obj->numberOfWords = $value->numberOfWords;
+            $obj->numberOfLetters = $value->numberOfLetters;
             $versesBasics[$index] = $obj;
             
             $obj2 = new stdClass();
@@ -102,8 +98,8 @@ class CategorizorService
         $tmp->name = $this->suraNumber;
         $tmp->suraNumber = $this->suraName;
         
-        $tmp->numberOfWords = $results->NumberOfWords; 
-        $tmp->numberOfLetters = $results->NumberOfLetters; 
+        $tmp->numberOfWords = $results->numberOfWords; 
+        $tmp->numberOfLetters = $results->numberOfLetters; 
         $tmp->numberOfVerses = count((array)($results->versesMap)); 
         $tmp->suraString = explode(',', $results->suraString); 
 
@@ -112,7 +108,7 @@ class CategorizorService
 
     public function allSurasData()
     {    
-        return file_get_contents(storage_path('allSurasData'));
+        return file_get_contents(storage_path('allSurasDataRaw'));
         
     }
     

@@ -27,7 +27,7 @@ class ScoreController extends Controller
         $fileName = $request->fileName;
         $file = storage_path() . "/decoded_suras" . '/' . $fileName . '_data.json';
         $results = json_decode(file_get_contents($file), true);
-        $this->words = $results["WordOccurrences"];
+        $this->words = $results["wordOccurrences"];
         $this->verses = $results["versesMap"];
     }
 
@@ -67,7 +67,6 @@ class ScoreController extends Controller
     //revisit
     public function find19InSura(Request $request)
     {
-        // $resultFileName = '074المدثر';
         $resultFileName = $request->fileName;
         // $resultFileName = '001الفاتحة';
         $scores = file_get_contents(storage_path('scored_verses/' . $resultFileName . '_verses_score.json', JSON_UNESCAPED_UNICODE));
@@ -83,7 +82,7 @@ class ScoreController extends Controller
             }
             for ($j = $i + 1; $j <= sizeof($scores); $j++) {
                 // dump($scores[$j]);
-                if ($j > $i + 19) {
+                if ($j > $i + 100) {
                     continue;
                 }
                 $sum = $sum + $scores[$j]["score"];

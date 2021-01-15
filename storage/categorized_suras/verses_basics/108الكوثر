@@ -3,21 +3,21 @@
         "bigIndx": 6205,
         "verseIndx": 1,
         "verseText": "\u0625\u0646\u0627 \u0623\u0639\u0637\u064a\u0646\u0643 \u0627\u0644\u0643\u0648\u062b\u0631",
-        "NumberOfWords": 3,
-        "NumberOfLetters": 15
+        "numberOfWords": 3,
+        "numberOfLetters": 15
     },
     {
         "bigIndx": 6206,
         "verseIndx": 2,
         "verseText": "\u0641\u0635\u0644 \u0644\u0631\u0628\u0643 \u0648\u0627\u0646\u062d\u0631",
-        "NumberOfWords": 3,
-        "NumberOfLetters": 12
+        "numberOfWords": 3,
+        "numberOfLetters": 12
     },
     {
         "bigIndx": 6207,
         "verseIndx": 3,
         "verseText": "\u0625\u0646 \u0634\u0627\u0646\u0626\u0643 \u0647\u0648 \u0627\u0644\u0623\u0628\u062a\u0631",
-        "NumberOfWords": 4,
-        "NumberOfLetters": 15
+        "numberOfWords": 4,
+        "numberOfLetters": 15
     }
 ]

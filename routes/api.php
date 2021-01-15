@@ -39,6 +39,7 @@ Route::get('view/{suraName}', 'ViewController@viewSuraMap');
 Route::get('quran-index', 'ViewController@viewQuranIndex');
 Route::get('fileNames', 'ViewController@viewFileNames');
 Route::get('view/verses-basics/{suraName}', 'ViewController@viewVersesBasics');
+Route::get('view/sura-details/{suraName}', 'ViewController@viewSuraDetails');
 
 //files Categorizer
 Route::get('categorize', 'CategorizerController@categorize');

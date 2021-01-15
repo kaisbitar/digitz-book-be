@@ -119,7 +119,7 @@ class Sanatizer extends Model
             $this->allSurasData[$versekey]->verseText = str_replace(' سوأ ', ' سوءا ', $this->allSurasData[$versekey]->verseText);
             $this->allSurasData[$versekey]->verseText = str_replace(' ردأ ', ' ردءا ', $this->allSurasData[$versekey]->verseText);
 
-            $this->allSurasData[$versekey]->verseText = str_replace(' ويءادم ', ' ويأدم ', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace(' ويءادم ', ' ويآدم ', $this->allSurasData[$versekey]->verseText);
             $this->allSurasData[$versekey]->verseText = str_replace('يستء', 'يست', $this->allSurasData[$versekey]->verseText);
 
             $this->allSurasData[$versekey]->verseText = str_replace('الءن', 'الن', $this->allSurasData[$versekey]->verseText);
@@ -161,8 +161,9 @@ class Sanatizer extends Model
             $this->allSurasData[$versekey]->verseText = str_replace('ووقىنا', 'ووقينا', $this->allSurasData[$versekey]->verseText);
             $this->allSurasData[$versekey]->verseText = str_replace('لخطءين', 'لخطين', $this->allSurasData[$versekey]->verseText);
             $this->allSurasData[$versekey]->verseText = str_replace('يجءرون', 'يجرون', $this->allSurasData[$versekey]->verseText);
+            $this->allSurasData[$versekey]->verseText = str_replace('جءروا', 'جروا', $this->allSurasData[$versekey]->verseText);
     
-            جءروا
+            // جءروا
             //use for testing
             // if(strpos($this->allSurasData[$versekey]->verseText," و")){
             //     echo $this->allSurasData[$versekey]->verseText;

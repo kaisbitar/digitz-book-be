@@ -40,19 +40,19 @@ class CalculatorService
         $resultFileName = $this->fullSura->Name . '_data.json';
         // if (!file_exists(storage_path('decoded_suras/' . $resultFileName))) {
             
-            $this->fullSura->NumberOfWords = $this->fullSura->calculateNumberOfWords();
-            $this->fullSura->NumberOfLetters = $this->fullSura->calculateNumberOfLetters();
+            $this->fullSura->numberOfWords = $this->fullSura->calculateNumberOfWords();
+            $this->fullSura->numberOfLetters = $this->fullSura->calculateNumberOfLetters();
             $this->fullSura->suraString = implode(",", $this->fullSura->verses);
             $verses = $this->processVerses($this->fullSura->verses);
             // $this->fullSura->SuraLettersCount = $this->counter->countLettersInString($this->fullSura->suraString);
 
             $this->fullSura->versesMap = $verses;
 
-            $this->fullSura->WordOccurrences = $this->counter->countWordsInString($this->fullSura->suraString);
+            $this->fullSura->wordOccurrences = $this->counter->countWordsInString($this->fullSura->suraString);
             // dd($this->fullSura->verses);
-            $this->fullSura->WordIndexes = $this->indexer->indexWordsInString($this->fullSura->suraString);
-            $this->fullSura->LetterOccurrences = $this->counter->countLettersInString($this->fullSura->suraString);
-            $this->fullSura->LetterIndexes = $this->indexer->indexLettersInString($this->fullSura->verses);
+            $this->fullSura->wordIndexes = $this->indexer->indexWordsInString($this->fullSura->suraString);
+            $this->fullSura->letterOccurrences = $this->counter->countLettersInString($this->fullSura->suraString);
+            $this->fullSura->letterIndexes = $this->indexer->indexLettersInString($this->fullSura->verses);
             
             file_put_contents(storage_path('decoded_suras/' . $resultFileName), $this->fullSura);
 
@@ -63,7 +63,7 @@ class CalculatorService
 
     public function mapLetters()
     {
-        $this->fullSura->LetterCount = $this->counter->countLettersInString($this->fullSura->suraString);
+        $this->fullSura->letterCount = $this->counter->countLettersInString($this->fullSura->suraString);
         $verses = $this->processVerses($this->fullSura->verses);
 
         return $verses;
@@ -98,14 +98,14 @@ class CalculatorService
 
             $verseObject->verseText = $verseObject->verseString;
             $verseObject->verseText = $verseObject->verseString;
-            $verseObject->NumberOfWords = sizeof($verseObject->verseArray);
-            $verseObject->NumberOfLetters = $verseObject->countVerseLetters();
+            $verseObject->numberOfWords = sizeof($verseObject->verseArray);
+            $verseObject->numberOfLetters = $verseObject->countVerseLetters();
 
-            $verseObject->LetterOccurrences = $this->counter->countLettersInString($verse);
-            $verseObject->LetterIndexes = $this->indexer->indexLettersInString($verseObject->verseArray);
+            $verseObject->letterOccurrences = $this->counter->countLettersInString($verse);
+            $verseObject->letterIndexes = $this->indexer->indexLettersInString($verseObject->verseArray);
 
-            $verseObject->WordOccurrences = $this->counter->countWordsInString($verse);
-            $verseObject->WordIndexes = $this->indexer->indexWordsInString($verse);
+            $verseObject->wordOccurrences = $this->counter->countWordsInString($verse);
+            $verseObject->wordIndexes = $this->indexer->indexWordsInString($verse);
 
             $returnArray[$index + 1] = $verseObject;
         }
@@ -137,8 +137,8 @@ class CalculatorService
                         $indexInfo["suraIndex"] = $i;              
                         // dd(count($mappedSura["versesMap"])-1);
                         $indexInfo["numberOfVerses"] = count($mappedSura["versesMap"]);
-                        $indexInfo["NumberOfWords"] = $mappedSura["NumberOfWords"];
-                        $indexInfo["NumberOfLetters"] = $mappedSura["NumberOfLetters"];
+                        $indexInfo["numberOfWords"] = $mappedSura["numberOfWords"];
+                        $indexInfo["numberOfLetters"] = $mappedSura["numberOfLetters"];
                         array_push($allSuras, $indexInfo);
                     // }  
                  $i++;
