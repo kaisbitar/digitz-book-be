@@ -20,10 +20,38 @@ class Viewcontroller extends Controller
     public function viewSuraMap()
     {    
         $suraName = $this->request->suraName;
-        $this->mappedSura = file_get_contents(storage_path('categorized_suras/suras_basics/' . $suraName));
-
-        return $this->mappedSura;
+        $mappedSura = json_decode(file_get_contents(storage_path('categorized_suras/suras_basics/' . $suraName)));
+        $decoded = json_decode(file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json')));
+        
+        $mappedSura->suraCharts = new stdClass();
+        
+        $mappedSura->suraDetails = json_decode(file_get_contents(storage_path('categorized_suras/details/' . $suraName))); 
+        $mappedSura->suraCharts->letters = $this->parseVerseObject('numberOfLetters', $decoded);
+        $mappedSura->suraCharts->words = $this->parseVerseObject('numberOfWords', $decoded);
+        return json_encode($mappedSura);
     }
+    public function parseVerseObject($dataType, $mappedSura){
+        $suraMap= $mappedSura->versesMap;
+
+        $tmp = [];
+        $index = 0;
+
+        foreach($suraMap as $key => $value){
+            $tmp[$index] = $value->{$dataType};
+            $index++;
+        }
+
+        return $tmp;
+
+    }
+
+    public function viewSuraDetails()
+    {    
+        $suraName = $this->request->suraName;
+        return file_get_contents(storage_path('categorized_suras/details/' . $suraName));
+    }
+
+
     public function allSurasData()
     {    
         return file_get_contents(storage_path('categorized_suras/search_basics/allSurasData'));
@@ -40,30 +68,7 @@ class Viewcontroller extends Controller
         $suraName = $this->request->suraName;
         return file_get_contents(storage_path('categorized_suras/suras_basics/' . $suraName));
     }
-    public function viewSuraDetails()
-    {    
-        $suraName = $this->request->suraName;
-        return file_get_contents(storage_path('categorized_suras/details/' . $suraName));
-    }
-//     public function viewSuraDetailsTest()
-// {
-//     $suraName = $this->request->suraName;
-
-//     $mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
-//     $mappedSura = (json_decode($mappedSura, true));
-//     $wordsOcc = [];
-//     $wordsOcc = $mappedSura["wordOccurrences"];
-//     asort($wordsOcc);
-
-//     return ($wordsOcc);}
-    public function viewSuraElement()
-    {
-        $suraName = $this->request->suraName;
-        $this->mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
-        $this->mappedSura = json_decode($this->mappedSura);
-        $dataType = $this->request->dataType;
-        $this->suraMap[$dataType]= $this->mappedSura->{$dataType};
-        $results = (($this->suraMap[$dataType]));
+    public function parseArrayToObj($results){
         $tmp = [];
         $index = 0;
         if(is_object($results))
@@ -77,24 +82,24 @@ class Viewcontroller extends Controller
         else    return json_encode($results);
     }
 
+    public function viewSuraElement()
+    {
+        $suraName = $this->request->suraName;
+        $this->mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
+        $this->mappedSura = json_decode($this->mappedSura);
+        $dataType = $this->request->dataType;
+        $this->suraMap[$dataType]= $this->mappedSura->{$dataType};
+        return $this->parseArrayToObj($this->suraMap[$dataType]);
+    }
+
     public function viewVerseElement(){
         $suraName = $this->request->suraName;
         $this->mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
         $this->mappedSura = json_decode($this->mappedSura);
-
         $dataType = $this->request->dataType;
-        $this->suraMap= $this->mappedSura->versesMap;
 
-        $tmp = [];
-        $index = 0;
-        $results = (($this->suraMap));
+        return $this->parseVerseObject($dataType, $this->mappedSura);
 
-        foreach($results as $key => $value){
-            $tmp[$index] = $value->{$dataType};
-            $index++;
-        }
-
-        return $tmp;
     }
 
     public function viewQuranIndex(){
