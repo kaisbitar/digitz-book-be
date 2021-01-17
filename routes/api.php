@@ -35,11 +35,14 @@ Route::get('allSurasData/all', 'ViewController@allSurasData');
 
 Route::get('view/sura/{dataType}/{suraName}', 'ViewController@viewSuraElement');
 Route::get('view/verses/{dataType}/{suraName}', 'ViewController@viewVerseElement');
-Route::get('view/{suraName}', 'ViewController@viewSuraMap');
 Route::get('quran-index', 'ViewController@viewQuranIndex');
 Route::get('fileNames', 'ViewController@viewFileNames');
 Route::get('view/verses-basics/{suraName}', 'ViewController@viewVersesBasics');
 Route::get('view/sura-details/{suraName}', 'ViewController@viewSuraDetails');
+Route::get('view/sura-charts/{suraName}', 'ViewController@viewSuraCharts');
+Route::get('view/sura-basics/{suraName}', 'ViewController@viewSuraBasics');
+Route::get('view/sura-text/{suraName}', 'ViewController@viewSuraText');
+
 
 //files Categorizer
 Route::get('categorize', 'CategorizerController@categorize');

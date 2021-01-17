@@ -17,40 +17,16 @@ class Viewcontroller extends Controller
     {
         $this->request = $request;
     }
-    public function viewSuraMap()
-    {    
-        $suraName = $this->request->suraName;
-        $mappedSura = json_decode(file_get_contents(storage_path('categorized_suras/suras_basics/' . $suraName)));
-        $decoded = json_decode(file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json')));
-        
-        $mappedSura->suraCharts = new stdClass();
-        
-        $mappedSura->suraDetails = json_decode(file_get_contents(storage_path('categorized_suras/details/' . $suraName))); 
-        $mappedSura->suraCharts->letters = $this->parseVerseObject('numberOfLetters', $decoded);
-        $mappedSura->suraCharts->words = $this->parseVerseObject('numberOfWords', $decoded);
-        return json_encode($mappedSura);
-    }
-    public function parseVerseObject($dataType, $mappedSura){
-        $suraMap= $mappedSura->versesMap;
-
-        $tmp = [];
-        $index = 0;
-
-        foreach($suraMap as $key => $value){
-            $tmp[$index] = $value->{$dataType};
-            $index++;
-        }
-
-        return $tmp;
-
-    }
-
     public function viewSuraDetails()
     {    
         $suraName = $this->request->suraName;
-        return file_get_contents(storage_path('categorized_suras/details/' . $suraName));
+        return file_get_contents(storage_path('categorized_suras/suras_details/' . $suraName));
     }
 
+    public function viewSuraCharts(){
+        $suraName = $this->request->suraName;
+        return file_get_contents(storage_path('categorized_suras/suras_charts/' . $suraName));
+    }
 
     public function allSurasData()
     {    
@@ -68,6 +44,21 @@ class Viewcontroller extends Controller
         $suraName = $this->request->suraName;
         return file_get_contents(storage_path('categorized_suras/suras_basics/' . $suraName));
     }
+    public function viewSuraText()
+    {    
+        $suraName = $this->request->suraName;
+        return file_get_contents(storage_path('categorized_suras/suras_text/' . $suraName));
+    }
+    
+    public function viewSuraElement()
+    {
+        $suraName = $this->request->suraName;
+        $mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
+        $mappedSura = json_decode($mappedSura);
+        $dataType = $this->request->dataType;
+        $this->suraMap[$dataType]= $mappedSura->{$dataType};
+        return $this->parseArrayToObj($this->suraMap[$dataType]);
+    }
     public function parseArrayToObj($results){
         $tmp = [];
         $index = 0;
@@ -81,24 +72,13 @@ class Viewcontroller extends Controller
         }
         else    return json_encode($results);
     }
-
-    public function viewSuraElement()
-    {
-        $suraName = $this->request->suraName;
-        $this->mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
-        $this->mappedSura = json_decode($this->mappedSura);
-        $dataType = $this->request->dataType;
-        $this->suraMap[$dataType]= $this->mappedSura->{$dataType};
-        return $this->parseArrayToObj($this->suraMap[$dataType]);
-    }
-
     public function viewVerseElement(){
         $suraName = $this->request->suraName;
-        $this->mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
-        $this->mappedSura = json_decode($this->mappedSura);
+        $mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraName . '_data.json'));
+        $mappedSura = json_decode($mappedSura);
         $dataType = $this->request->dataType;
-
-        return $this->parseVerseObject($dataType, $this->mappedSura);
+        dd('Needs work!');
+        return $this->parseVerseObject($dataType, $mappedSura);
 
     }
 

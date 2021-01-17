@@ -25,6 +25,9 @@ class CategorizorService
             self::categorizeSuraBasics();
             self::categorizeVersesBasic();
             self::categorizeVersesdetails();
+            self::categorizeSuraCharts();
+            self::categorizeSuraText();
+            
         }
         file_put_contents(storage_path('categorized_suras/search_basics/allSurasData'), json_encode($this->searchBasics, JSON_PRETTY_PRINT),FILE_APPEND );
     }
@@ -47,7 +50,9 @@ class CategorizorService
                     $index = 0;
                     foreach($innerValue as $innerKey => $item){
                         $obj = new stdClass();
-                        $obj->$innerKey = $item;
+                        $obj->element = $innerKey;
+                        $obj->value = $item;
+                        // $obj->$innerKey = $item;
                         $tmp[$index] = $obj;
                         $index++;
                     }
@@ -56,7 +61,7 @@ class CategorizorService
                 }
             }
             $verseIndex++;
-        file_put_contents(storage_path('categorized_suras/details/' . $this->fileName), json_encode($suraDetails) );
+        file_put_contents(storage_path('categorized_suras/suras_details/' . $this->fileName), json_encode($suraDetails) );
 
     }
     public function categorizeVersesBasic()
@@ -101,9 +106,16 @@ class CategorizorService
         $tmp->numberOfWords = $results->numberOfWords; 
         $tmp->numberOfLetters = $results->numberOfLetters; 
         $tmp->numberOfVerses = count((array)($results->versesMap)); 
-        $tmp->suraString = explode(',', $results->suraString); 
 
         file_put_contents(storage_path('categorized_suras/suras_basics/' . $this->fileName ), json_encode($tmp));
+    }
+    public function categorizeSuraText()
+    {
+        $results =  json_decode($this->mappedSura);
+        $tmp = new stdClass();
+        $tmp->suraText = explode(',', $results->suraString); 
+
+        file_put_contents(storage_path('categorized_suras/suras_text/' . $this->fileName ), json_encode($tmp));
     }
 
     public function allSurasData()
@@ -117,4 +129,31 @@ class CategorizorService
 
         return $quranIndex;
     }
+
+
+    public function categorizeSuraCharts(){
+        $results =  json_decode($this->mappedSura);
+
+        
+        $letters= $this->parseVerseObject('numberOfLetters', $results->versesMap);
+        $words = $this->parseVerseObject('numberOfWords', $results->versesMap);
+        $suraCharts = new stdClass();
+        $suraCharts->letters = $letters;
+        $suraCharts->words = $words;
+        file_put_contents(storage_path('categorized_suras/suras_charts/' . $this->fileName ), json_encode($suraCharts));
+    }
+    public function parseVerseObject($dataType, $versesMap){
+        $suraMap= $versesMap;
+
+        $tmp = [];
+        $index = 0;
+        foreach($suraMap as $key => $value){
+            $tmp[$index] = $value->{$dataType};
+            $index++;
+        }
+
+        return $tmp;
+
+    }
+
 }

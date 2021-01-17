@@ -172,12 +172,14 @@ class CalculatorService
         self::deleteDirctory('decoded_verses');
         self::deleteDirctory('scored_verses');
         self::deleteDirctory('categorized_suras/verses_basics');
-        self::deleteDirctory('categorized_suras/suras_basics');
         self::deleteDirctory('categorized_suras/search_basics');
-        self::deleteDirctory('categorized_suras/details');
-        // self::deleteDirctory('categorized_suras/details/LetterOccurrences');
-        // self::deleteDirctory('categorized_suras/details/WordIndexes');
-        // self::deleteDirctory('categorized_suras/details/WordOccurrences');
+        self::deleteDirctory('categorized_suras/suras_basics');
+        self::deleteDirctory('categorized_suras/suras_charts');
+        self::deleteDirctory('categorized_suras/suras_details');
+        self::deleteDirctory('categorized_suras/suras_text');
+        
+        dump( 'Directories deleted.');
+        dump('Mapping suras and verses... ');
         
         $surasFiles = scandir(storage_path('SanatizedSuras'));
         foreach ($surasFiles as $suraFileName) {
@@ -195,13 +197,14 @@ class CalculatorService
 
                 $score = new ScoreController($fileToScore);
                 $score->eachVerseScore();
-
             }
         }
         $this->mapComplete();
         
         $categorizer = new CategorizorService();
         $categorizer->categorize();
+
+        dump( 'Directories created.');
 
         return;
     }
