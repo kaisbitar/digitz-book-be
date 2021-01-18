@@ -23,10 +23,11 @@ class CategorizorService
             $this->fileName = $item->fileName;
             $this->mappedSura = file_get_contents(storage_path('decoded_suras/' . $this->fileName . '_data.json'));
             self::categorizeSuraBasics();
-            self::categorizeVersesBasic();
-            self::categorizeVersesdetails();
             self::categorizeSuraCharts();
             self::categorizeSuraText();
+            self::categorizeVersesBasic();
+            self::categorizeVersesdetails();
+            
             
         }
         file_put_contents(storage_path('categorized_suras/search_basics/allSurasData'), json_encode($this->searchBasics, JSON_PRETTY_PRINT),FILE_APPEND );
@@ -50,8 +51,8 @@ class CategorizorService
                     $index = 0;
                     foreach($innerValue as $innerKey => $item){
                         $obj = new stdClass();
-                        $obj->element = $innerKey;
-                        $obj->value = $item;
+                        $obj->e = $innerKey;
+                        $obj->v = $item;
                         // $obj->$innerKey = $item;
                         $tmp[$index] = $obj;
                         $index++;
