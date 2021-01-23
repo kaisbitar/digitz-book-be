@@ -32,9 +32,10 @@ Route::get('allSurasData/all', 'ViewController@allSurasData');
 // api/view/sura/wordOccurrences/نوح         api/view/verses/wordOccurrences/نوح
 // api/view/sura/wordIndex/نوح         api/view/verses/wordIndexes/نوح
 // api/view/sura/letterIndexes/نوح         api/view/verses/score/نوح
+// Route::get('view/sura/{dataType}/{suraName}', 'ViewController@viewSuraElement');
+// Route::get('view/verses/{dataType}/{suraName}', 'ViewController@viewVerseElement');
 
-Route::get('view/sura/{dataType}/{suraName}', 'ViewController@viewSuraElement');
-Route::get('view/verses/{dataType}/{suraName}', 'ViewController@viewVerseElement');
+
 Route::get('quran-index', 'ViewController@viewQuranIndex');
 Route::get('fileNames', 'ViewController@viewFileNames');
 Route::get('view/verses-basics/{suraName}', 'ViewController@viewVersesBasics');

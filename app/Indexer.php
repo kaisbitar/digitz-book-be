@@ -24,7 +24,7 @@ class Indexer extends Model
             
             array_push($returnArray[$char], $index + 1);
         }
-
+        asort($returnArray);
         return $returnArray;
     }
 
@@ -42,7 +42,7 @@ class Indexer extends Model
 
             array_push($returnArray[$word], $index + 1);
         }
-
+        asort($returnArray);
         return $returnArray;
     }
 }

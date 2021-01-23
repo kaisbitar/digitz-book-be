@@ -14,7 +14,7 @@ class CategorizorService
 
     public function categorize()
     {   
-        $this->quranIndex = self::viewQuranIndex();
+        $this->quranIndex = $this->viewQuranIndex();
         $qIndex = json_decode($this->quranIndex);
         $this->bigIndx = 1;
         $this->searchBasics = [];
@@ -22,11 +22,11 @@ class CategorizorService
         foreach ($qIndex as $item) {
             $this->fileName = $item->fileName;
             $this->mappedSura = file_get_contents(storage_path('decoded_suras/' . $this->fileName . '_data.json'));
-            self::categorizeSuraBasics();
-            self::categorizeSuraCharts();
-            self::categorizeSuraText();
-            self::categorizeVersesBasic();
-            self::categorizeVersesdetails();
+            $this->categorizeSuraBasics();
+            $this->categorizeSuraCharts();
+            $this->categorizeSuraText();
+            $this->categorizeVersesBasic();
+            $this->categorizeVersesdetails();
             
             
         }
@@ -51,9 +51,14 @@ class CategorizorService
                     $index = 0;
                     foreach($innerValue as $innerKey => $item){
                         $obj = new stdClass();
-                        $obj->e = $innerKey;
-                        $obj->v = $item;
-                        // $obj->$innerKey = $item;
+                        // dump($key);
+                        if(($key =='letterOccurrences') || ($key == 'wordOccurrences')){
+                            $obj->x = $innerKey;
+                            $obj->y = $item;
+                        }
+                        else{
+                            $obj->$innerKey = $item;
+                        }
                         $tmp[$index] = $obj;
                         $index++;
                     }
