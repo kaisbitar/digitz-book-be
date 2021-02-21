@@ -21,7 +21,7 @@ class Sanatizer extends Model
     {
         $this->applyStringRules();
         $suraString = $this->getQuranString();
-        file_put_contents(storage_path('SanatizedSuras/المصحف'), $suraString);
+        file_put_contents(storage_path('SanatizedSuras/000المصحف'), $suraString);
     } 
 
     public function getQuranString()
@@ -32,7 +32,6 @@ class Sanatizer extends Model
         foreach($allSurasData as $key=>$value){
             $suraString .= $allSurasData[$key]->verseText . ",";   
         }
-
         $suraString = rtrim($suraString, ",");
 
         return $suraString;
@@ -83,6 +82,12 @@ class Sanatizer extends Model
             }
         }
         $suraString = rtrim($suraString, ",");
+
+        echo $suraString;
+        echo '<br>';
+        echo '<br>';
+        echo '<br>';
+        
         return $suraString;
     }
 
@@ -115,61 +120,75 @@ class Sanatizer extends Model
         $objToView = $this->allSurasData; 
 
         foreach($objToView as $versekey => $value){
+            $wordsArr = explode(" ", $objToView[$versekey]->verseText);
+            foreach($wordsArr as $wordKey => $wordVal){
 
-            // $objToView[$versekey]->verseText = str_replace('يء', 'ࢨ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('يء', 'ي', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('ءا', 'آ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace(' رأ ', ' رءا ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace(' تبوأ  ', ' تبوءا ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace(' جزأ ', ' جزءا ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace(' ,ورأ  ', ' ورءا ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace(' ترأ ', ' ترءا ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace(' سوأ ', ' سوءا ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace(' ردأ ', ' ردءا ', $objToView[$versekey]->verseText);
+                $wordsArr[$wordKey] = str_replace('يء', 'ي', $wordsArr[$wordKey]);
 
-            $objToView[$versekey]->verseText = str_replace(' ويءادم ', ' ويآدم ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('يستء', 'يست', $objToView[$versekey]->verseText);
+                $wordsArr[$wordKey] = str_replace('ءا', 'آ', $wordsArr[$wordKey]);
+             
 
-            $objToView[$versekey]->verseText = str_replace('الءن', 'الن', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('ألءن', 'ألن', $objToView[$versekey]->verseText);
+                $wordsArr[$wordKey] = str_replace('ويءادم', 'ويآدم', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('يادم', 'يآدم', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('ءادم', 'آدم', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('لءآدم', 'لآدم', $wordsArr[$wordKey]);
 
-            $objToView[$versekey]->verseText = str_replace('لءي', 'لي', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('لءو', 'لو', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('بءو', 'بؤ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('سءو', 'سؤ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('كءو', 'كؤ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('هءو', 'هؤ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('فءو', 'فؤ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('زءو', 'زؤ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('نءو', 'نؤ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('تءو', 'تؤ', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('طءو', 'طؤ', $objToView[$versekey]->verseText);
-            
-            $objToView[$versekey]->verseText = str_replace('كءي', 'كي', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('زءي', 'زي', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('سءي', 'سي', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('بءي', 'بي', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('سء', 'س', $objToView[$versekey]->verseText);
+                $wordsArr[$wordKey] = str_replace('رآ', 'رءا', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('تبوآ','تبوءا', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('جزآ', 'جزءا', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('ورآ','ورءا', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('ترآ', 'ترءا', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('سوآ', 'سوءا', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('ردآ', 'ردءا', $wordsArr[$wordKey]);
 
-            $objToView[$versekey]->verseText = str_replace('ىه', 'يه', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('ىل', 'يل', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('ىك', 'يك', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('ىة', 'ية', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('تىن', 'تين', $objToView[$versekey]->verseText);
-            
-            
-            $objToView[$versekey]->verseText = str_replace('والأفءدة', 'والأفدة', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('أنجىنا', 'أنجينا', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('أفءدتهم', 'أفدتهم', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('تجءرون', 'تجرون', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('المستءخرين', 'المستخرين', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('شطءه', 'شطه', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('استءذن', 'استذن', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('استءذنوك', 'استذنوك', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('ووقىنا', 'ووقينا', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('لخطءين', 'لخطين', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('يجءرون', 'يجرون', $objToView[$versekey]->verseText);
-            $objToView[$versekey]->verseText = str_replace('جءروا', 'جروا', $objToView[$versekey]->verseText);
+                $wordsArr[$wordKey] = str_replace('يستء', 'يست', $wordsArr[$wordKey]);
+
+                $wordsArr[$wordKey] = str_replace('الءن', 'الن', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('ألءن', 'ألن', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('آلءن', 'آلن', $wordsArr[$wordKey]);
+
+                $wordsArr[$wordKey] = str_replace('لءي', 'لي', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('لءو', 'لو', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('بءو', 'بؤ', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('سءو', 'سؤ', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('كءو', 'كؤ', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('هءو', 'هؤ', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('فءو', 'فؤ', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('زءو', 'زؤ', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('نءو', 'نؤ', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('تءو', 'تؤ', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('طءو', 'طؤ', $wordsArr[$wordKey]);
+                
+                $wordsArr[$wordKey] = str_replace('كءي', 'كي', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('زءي', 'زي', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('سءي', 'سي', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('بءي', 'بي', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('سء', 'س', $wordsArr[$wordKey]);
+
+                $wordsArr[$wordKey] = str_replace('ىه', 'يه', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('ىل', 'يل', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('ىك', 'يك', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('ىة', 'ية', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('تىن', 'تين', $wordsArr[$wordKey]);
+                
+                
+                $wordsArr[$wordKey] = str_replace('والأفءدة', 'والأفدة', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('أنجىنا', 'أنجينا', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('أفءدتهم', 'أفدتهم', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('تجءرون', 'تجرون', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('المستءخرين', 'المستخرين', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('شطءه', 'شطه', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('استءذن', 'استذن', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('استءذنوك', 'استذنوك', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('ووقىنا', 'ووقينا', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('لخطءين', 'لخطين', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('يجءرون', 'يجرون', $wordsArr[$wordKey]);
+                $wordsArr[$wordKey] = str_replace('جءروا', 'جروا', $wordsArr[$wordKey]);
+                
+                $wordsArr[$wordKey] = str_replace('قرءان', 'قرآن', $wordsArr[$wordKey]);
+              
+            }
+            $objToView[$versekey]->verseText = implode(' ', $wordsArr);
         }
 
         return $objToView;

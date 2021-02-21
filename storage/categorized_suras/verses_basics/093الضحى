@@ -1,78 +1,78 @@
 [
     {
-        "bigIndx": 6080,
-        "verseIndx": 1,
-        "verseText": "\u0648\u0627\u0644\u0636\u062d\u0649",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 1,
+        "verseIndex": 1,
         "numberOfWords": 1,
         "numberOfLetters": 6
     },
     {
-        "bigIndx": 6081,
-        "verseIndx": 2,
-        "verseText": "\u0648\u0627\u0644\u064a\u0644 \u0625\u0630\u0627 \u0633\u062c\u0649",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 2,
+        "verseIndex": 2,
         "numberOfWords": 3,
         "numberOfLetters": 11
     },
     {
-        "bigIndx": 6082,
-        "verseIndx": 3,
-        "verseText": "\u0645\u0627 \u0648\u062f\u0639\u0643 \u0631\u0628\u0643 \u0648\u0645\u0627 \u0642\u0644\u0649",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 3,
+        "verseIndex": 3,
         "numberOfWords": 5,
         "numberOfLetters": 15
     },
     {
-        "bigIndx": 6083,
-        "verseIndx": 4,
-        "verseText": "\u0648\u0644\u0644\u0622\u062e\u0631\u0629 \u062e\u064a\u0631 \u0644\u0643 \u0645\u0646 \u0627\u0644\u0623\u0648\u0644\u0649",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 4,
+        "verseIndex": 4,
         "numberOfWords": 5,
         "numberOfLetters": 20
     },
     {
-        "bigIndx": 6084,
-        "verseIndx": 5,
-        "verseText": "\u0648\u0644\u0633\u0648\u0641 \u064a\u0639\u0637\u064a\u0643 \u0631\u0628\u0643 \u0641\u062a\u0631\u0636\u0649",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 5,
+        "verseIndex": 5,
         "numberOfWords": 4,
         "numberOfLetters": 18
     },
     {
-        "bigIndx": 6085,
-        "verseIndx": 6,
-        "verseText": "\u0623\u0644\u0645 \u064a\u062c\u062f\u0643 \u064a\u062a\u064a\u0645\u0627 \u0641\u0622\u0648\u0649",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 6,
+        "verseIndex": 6,
         "numberOfWords": 4,
         "numberOfLetters": 16
     },
     {
-        "bigIndx": 6086,
-        "verseIndx": 7,
-        "verseText": "\u0648\u0648\u062c\u062f\u0643 \u0636\u0627\u0644\u0627 \u0641\u0647\u062f\u0649",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 7,
+        "verseIndex": 7,
         "numberOfWords": 3,
         "numberOfLetters": 13
     },
     {
-        "bigIndx": 6087,
-        "verseIndx": 8,
-        "verseText": "\u0648\u0648\u062c\u062f\u0643 \u0639\u0627\u0626\u0644\u0627 \u0641\u0623\u063a\u0646\u0649",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 8,
+        "verseIndex": 8,
         "numberOfWords": 3,
         "numberOfLetters": 15
     },
     {
-        "bigIndx": 6088,
-        "verseIndx": 9,
-        "verseText": "\u0641\u0623\u0645\u0627 \u0627\u0644\u064a\u062a\u064a\u0645 \u0641\u0644\u0627 \u062a\u0642\u0647\u0631",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 9,
+        "verseIndex": 9,
         "numberOfWords": 4,
         "numberOfLetters": 17
     },
     {
-        "bigIndx": 6089,
-        "verseIndx": 10,
-        "verseText": "\u0648\u0623\u0645\u0627 \u0627\u0644\u0633\u0627\u0626\u0644 \u0641\u0644\u0627 \u062a\u0646\u0647\u0631",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 10,
+        "verseIndex": 10,
         "numberOfWords": 4,
         "numberOfLetters": 17
     },
     {
-        "bigIndx": 6090,
-        "verseIndx": 11,
-        "verseText": "\u0648\u0623\u0645\u0627 \u0628\u0646\u0639\u0645\u0629 \u0631\u0628\u0643 \u0641\u062d\u062f\u062b",
+        "sura": "093\u0627\u0644\u0636\u062d\u0649",
+        "bigIndx": 11,
+        "verseIndex": 11,
         "numberOfWords": 4,
         "numberOfLetters": 16
     }

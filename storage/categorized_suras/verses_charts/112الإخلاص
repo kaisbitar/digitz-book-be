@@ -1,0 +1,30 @@
+[
+    {
+        "bigIndx": 12447,
+        "verseIndx": 1,
+        "verseText": "\u0642\u0644 \u0647\u0648 \u0627\u0644\u0644\u0647 \u0623\u062d\u062f",
+        "numberOfWords": 4,
+        "numberOfLetters": 11
+    },
+    {
+        "bigIndx": 12448,
+        "verseIndx": 2,
+        "verseText": "\u0627\u0644\u0644\u0647 \u0627\u0644\u0635\u0645\u062f",
+        "numberOfWords": 2,
+        "numberOfLetters": 9
+    },
+    {
+        "bigIndx": 12449,
+        "verseIndx": 3,
+        "verseText": "\u0644\u0645 \u064a\u0644\u062f \u0648\u0644\u0645 \u064a\u0648\u0644\u062f",
+        "numberOfWords": 4,
+        "numberOfLetters": 12
+    },
+    {
+        "bigIndx": 12450,
+        "verseIndx": 4,
+        "verseText": "\u0648\u0644\u0645 \u064a\u0643\u0646 \u0644\u0647 \u0643\u0641\u0648\u0627 \u0623\u062d\u062f",
+        "numberOfWords": 5,
+        "numberOfLetters": 15
+    }
+]

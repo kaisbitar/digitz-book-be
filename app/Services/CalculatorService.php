@@ -37,21 +37,22 @@ class CalculatorService
 
     public function mapSura()
     {   
+       
         $resultFileName = $this->fullSura->Name . '_data.json';
             
-            $this->fullSura->numberOfWords = $this->fullSura->calculateNumberOfWords();
-            $this->fullSura->numberOfLetters = $this->fullSura->calculateNumberOfLetters();
-            $this->fullSura->suraString = implode(",", $this->fullSura->verses);
-            $verses = $this->processVerses($this->fullSura->verses);
+        $this->fullSura->numberOfWords = $this->fullSura->calculateNumberOfWords();
+        $this->fullSura->numberOfLetters = $this->fullSura->calculateNumberOfLetters();
+        $this->fullSura->suraString = implode(",", $this->fullSura->verses);
+        $verses = $this->processVerses($this->fullSura->verses);
 
-            $this->fullSura->versesMap = $verses;
+        $this->fullSura->versesMap = $verses;
 
-            $this->fullSura->wordOccurrences = $this->counter->countWordsInString($this->fullSura->suraString);
-            $this->fullSura->wordIndexes = $this->indexer->indexWordsInString($this->fullSura->suraString);
-            $this->fullSura->letterOccurrences = $this->counter->countLettersInString($this->fullSura->suraString);
-            $this->fullSura->letterIndexes = $this->indexer->indexLettersInString($this->fullSura->verses);
-            
-            file_put_contents(storage_path('decoded_suras/' . $resultFileName), $this->fullSura);
+        $this->fullSura->wordOccurrences = $this->counter->countWordsInString($this->fullSura->suraString);
+        $this->fullSura->wordIndexes = $this->indexer->indexWordsInString($this->fullSura->suraString);
+        $this->fullSura->letterOccurrences = $this->counter->countLettersInString($this->fullSura->suraString);
+        $this->fullSura->letterIndexes = $this->indexer->indexLettersInString($this->fullSura->verses);
+        
+        file_put_contents(storage_path('decoded_suras/' . $resultFileName), $this->fullSura);
 
         $mappedSura = file_get_contents(storage_path('decoded_suras/' . $this->fullSura->Name . '_data.json'));
 
@@ -68,7 +69,8 @@ class CalculatorService
 
     public function mapVerses()
     {                
-        $resultFileName = $this->fullSura->Name . '_data.json';
+
+          $resultFileName = $this->fullSura->Name . '_data.json';
             $verses = $this->processVerses($this->fullSura->verses);
             $verses["SuraLettersCount"] = $this->counter->countLettersInString($this->fullSura->suraString);
             $resultFileName = $this->fullSura->Name . '_data.json';
@@ -88,9 +90,8 @@ class CalculatorService
 
             $suraName = $this->fullSura->Name;
             $verseObject->Sura = $suraName;
-            $verseObject->verseIndx = $index+1;
+            $verseObject->verseIndex = $index+1;
 
-            $verseObject->verseText = $verseObject->verseString;
             $verseObject->verseText = $verseObject->verseString;
             $verseObject->numberOfWords = sizeof($verseObject->verseArray);
             $verseObject->numberOfLetters = $verseObject->countVerseLetters();
@@ -103,7 +104,7 @@ class CalculatorService
 
             $returnArray[$index + 1] = $verseObject;
         }
-
+ 
         return $returnArray;
     }
 
@@ -113,17 +114,16 @@ class CalculatorService
             $surasFiles = scandir(storage_path('decoded_suras'));
             $suraIndex = 0;
             $allSuras = [];
-            $i=1;
+            $i=0;
             foreach ($surasFiles as $suraFile) {
-                if (($suraFile != '.')&&($suraFile != '..')&&($suraFile != 'المصحف_data.json')&&($suraFile != 'المصحف_fe_data.json')) {
+                if (($suraFile != '.')&&($suraFile != '..')) {
                     $mappedSura = file_get_contents(storage_path('decoded_suras/' . $suraFile));
                     $mappedSura = json_decode($mappedSura, true);
                     $indexInfo["fileName"] = $mappedSura["Name"];
-                    $indexInfo["Name"] = $indexInfo["fileName"];     
-                    $indexInfo["Name"] = preg_replace('/[0-9]+/', '', $indexInfo["Name"]);
+                    // $indexInfo["Name"] = $indexInfo["fileName"];     
+                    // $indexInfo["Name"] = preg_replace('/[0-9]+/', '', $indexInfo["Name"]);
 
-                    $indexInfo["Name"] = str_replace("_" , "" , $indexInfo["Name"]);      
-                    $indexInfo["suraIndex"] = $i;              
+                    // $indexInfo["Name"] = str_replace("_" , "" , $indexInfo["Name"]);      
                     $indexInfo["numberOfVerses"] = count($mappedSura["versesMap"]);
                     $indexInfo["numberOfWords"] = $mappedSura["numberOfWords"];
                     $indexInfo["numberOfLetters"] = $mappedSura["numberOfLetters"];
@@ -135,9 +135,26 @@ class CalculatorService
                 storage_path('quranIndexWithData'),
                 json_encode($allSuras, JSON_UNESCAPED_UNICODE)
             );
-
+        $this->addSuraIndexToQuran();
         return file_get_contents(storage_path('quranIndexWithData')) ;
-    } 
+    }
+
+    public function addSuraIndexToQuran(){
+        $quranIndex = json_decode(file_get_contents(storage_path('quranIndexWithData')));
+        $oneQuranIndex = json_decode(file_get_contents(storage_path('categorized_suras/search_basics/oneQuranFile')));
+        $i = 0;
+        foreach ($quranIndex as $key => $value) {
+            if($value->fileName !== '000المصحف'){
+                $value->verseNumberToQuran = $oneQuranIndex[$i]->verseNumberToQuran;
+                $i = $i + $value->numberOfVerses;
+            }
+        }
+        file_put_contents(
+            storage_path('quranIndexWithData'),
+            json_encode($quranIndex, JSON_UNESCAPED_UNICODE)
+        );
+        
+    }
 
     public function deleteDirctory($directory){
         $files = scandir(storage_path($directory));
@@ -168,7 +185,7 @@ class CalculatorService
         
         $surasFiles = scandir(storage_path('SanatizedSuras'));
         foreach ($surasFiles as $suraFileName) {
-            if (($suraFileName != '.')&&($suraFileName != '..')&&($suraFileName != 'المصحف')) {
+            if (($suraFileName != '.')&&($suraFileName != '..')) {
                 $suraFile = File::get(storage_path('SanatizedSuras' . '/' .$suraFileName));
                                 
                 $this->fullSura = new FullSura($suraFile);
@@ -184,7 +201,7 @@ class CalculatorService
                 $score->eachVerseScore();
             }
         }
-        $this->mapComplete();
+        // $this->mapComplete();
         
         $categorizer = new CategorizorService();
         $categorizer->categorize();

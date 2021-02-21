@@ -18,31 +18,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('allSurasData/all', 'ViewController@allSurasData');
-
-//Examples:
-// api/view/sura/suraName/نوح         api/view/verses/verseNumberToQuran/نوح
-// api/view/sura/suraNumber/نوح         api/view/verses/verseNumber/نوح
-// api/view/sura/numberOfWords/نوح         api/view/verses/verseText/نوح
-// api/view/sura/numberOfLetters/نوح         api/view/verses/score/نوح
-// api/view/sura/versesMap/نوح         api/view/verses/numberOfWords/نوح
-// api/view/sura/wordsScores/نوح         api/view/verses/numberOfLetters/نوح
-// api/view/sura/versesScores/نوح         api/view/verses/letterOccurrences/نوح
-// api/view/sura/letterOccurrences/نوح         api/view/verses/letterIndexes/نوح
-// api/view/sura/wordOccurrences/نوح         api/view/verses/wordOccurrences/نوح
-// api/view/sura/wordIndex/نوح         api/view/verses/wordIndexes/نوح
-// api/view/sura/letterIndexes/نوح         api/view/verses/score/نوح
-// Route::get('view/sura/{dataType}/{suraName}', 'ViewController@viewSuraElement');
-// Route::get('view/verses/{dataType}/{suraName}', 'ViewController@viewVerseElement');
-
+// Route::get('allSurasData/all', 'ViewController@allSurasData');
 
 Route::get('quran-index', 'ViewController@viewQuranIndex');
 Route::get('fileNames', 'ViewController@viewFileNames');
+
 Route::get('view/verses-basics/{suraName}', 'ViewController@viewVersesBasics');
+
+
 Route::get('view/sura-details/{suraName}', 'ViewController@viewSuraDetails');
 Route::get('view/sura-charts/{suraName}', 'ViewController@viewSuraCharts');
 Route::get('view/sura-basics/{suraName}', 'ViewController@viewSuraBasics');
 Route::get('view/sura-text/{suraName}', 'ViewController@viewSuraText');
+Route::get('view/search/{searchQuery}', 'ViewController@viewSearchResults');
+Route::get('allSurasData/all', 'ViewController@viewOneQuranFile');
+
+
 
 
 //files Categorizer
@@ -54,6 +45,7 @@ Route::get('sura-map/{fileName}', 'CalculatorController@mapSura');
 Route::get('verses-map/{fileName}', 'CalculatorController@mapVerses');
 Route::get('letters-map/{fileName}', 'CalculatorController@mapLetters');
 Route::get('sanatize', 'SanatizerController@createAllSurasFiles');
+Route::get('SanatizerNew', 'SanatizerController@SanatizerNew');
 
 //send quraIndex
 Route::get('quran-index/{fileName}', 'CalculatorController@listSuras');

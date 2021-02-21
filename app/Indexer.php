@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use stdClass;
 
 class Indexer extends Model
 {
@@ -33,16 +34,16 @@ class Indexer extends Model
         $string = \str_replace(",", " ", $string);
 
         $wordsArray = explode(" ", $string);
-        $returnArray = [];
+        $returnArray = new stdClass();
 
         foreach ($wordsArray as $index => $word) {
-            if (!isset($returnArray[$word])) {
-                $returnArray[$word] = [];
+            if(!property_exists($returnArray, $word)){
+            // if (!(array)($returnArray[$word])) {
+                $returnArray->$word = [];
             }
-
-            array_push($returnArray[$word], $index + 1);
+            array_push($returnArray->$word, $index + 1);
         }
-        asort($returnArray);
+        // asort($returnArray);
         return $returnArray;
     }
 }

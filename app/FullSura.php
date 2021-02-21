@@ -9,7 +9,7 @@ class FullSura extends Model
     public $verses;
 
     public function __construct($file)
-    {
+    { 
         $this->verses =  explode(",", $file);
         // $this->verses =  ($file);
 

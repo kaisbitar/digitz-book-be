@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Sanatizer;
+use App\SanatizerNew;
 use Illuminate\Support\Facades\File;
 
 class SanatizerController extends Controller
@@ -11,8 +12,9 @@ class SanatizerController extends Controller
     {
         $sanatizer = new Sanatizer();
         // $sanatizer->createAllSurasFiles();
-        $sanatizer->createAllSurasFiles('SanatizedSuras/', 'view');
-        $sanatizer->createAllSurasFiles('toCalculateSuras/', 'calculate');
+        // $sanatizer->createAllSurasFiles('SanatizedSuras/', 'view');
+        // $sanatizer->createAllSurasFiles('toCalculateSuras/', 'calculate');
+        $sanatizer->CreateoneQuranFile();
     }
 
     public function CreateoneQuranFile()
@@ -20,4 +22,11 @@ class SanatizerController extends Controller
         $sanatizer = new Sanatizer();
         $sanatizer->CreateoneQuranFile();
     }
+
+    public function SanatizerNew()
+    {
+        $sanatizer = new SanatizerNew();
+        $sanatizer->sanatizeSuras();
+    }
+    
 }

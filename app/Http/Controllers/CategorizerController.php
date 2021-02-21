@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-ini_set('memory_limit', '1G');
 
 
 use App\Http\Controllers\Controller;
@@ -15,5 +14,10 @@ class CategorizerController extends Controller
     {
         $this->service = new CategorizorService();
         return $this->service->categorize();
+    }
+    public function categorizeOneQuranFile()
+    {
+        $this->service = new CategorizorService();
+        return $this->service->categorizeOneQuranFile();
     }
 }
