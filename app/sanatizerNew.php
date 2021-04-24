@@ -91,6 +91,7 @@ class SanatizerNew extends Model
         $string = str_replace('تىن', 'تين', $string);
         
         
+        $string = str_replace('أفءدة', 'أفدة', $string);
         $string = str_replace('والأفءدة', 'والأفدة', $string);
         $string = str_replace('أنجىنا', 'أنجينا', $string);
         $string = str_replace('أفءدتهم', 'أفدتهم', $string);

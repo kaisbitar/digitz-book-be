@@ -32,6 +32,7 @@ Route::get('view/sura-basics/{suraName}', 'ViewController@viewSuraBasics');
 Route::get('view/sura-text/{suraName}', 'ViewController@viewSuraText');
 Route::get('view/search/{searchQuery}', 'ViewController@viewSearchResults');
 Route::get('allSurasData/all', 'ViewController@viewOneQuranFile');
+Route::get('allVersesWithTashkeel', 'ViewController@viewAllVersesWithTashkeel');
 
 
 

@@ -71,6 +71,10 @@ class Viewcontroller extends Controller
     {
         return file_get_contents(storage_path('categorized_suras/search_basics/oneQuranFile'));
     }
+    public function viewAllVersesWithTashkeel()
+    {
+        return (file_get_contents(storage_path('allVersesWithTashkeel')));
+    }
     public function viewVersesBasics()
     {
         $suraName = $this->request->suraName;
